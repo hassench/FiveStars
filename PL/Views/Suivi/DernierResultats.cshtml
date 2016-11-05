@@ -1,0 +1,47 @@
+﻿@model Entities.ViewModels.ResultsViewModel
+
+@{
+    ViewBag.Title = "Dernier Resultats de la Zone @Model.audit.zone.NomZone";
+}
+
+<h2>Dernier Resultats de la Zone @Model.audit.zone.NomZone</h2>
+
+
+
+
+        @{int compt = -1;}
+        @foreach (Entities.Models.Theme item in Model.themes)
+        {
+            <table class="table">
+                <tr>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayFor(modelItem => item.info)</th>
+                    @*<th>Passing Grade @Html.DisplayFor(modelItem => item.Passinggrade) %</th>*@
+
+                </tr>
+            </table>
+            <table style="text-align:left" class="table">
+                <tr>
+                    <th></th>
+                </tr>
+                @foreach (Entities.Models.Point insideitem in item.points)
+                {
+                    compt++;
+
+                    <tr>
+
+                        <th style="width: 5%">@Html.DisplayFor(m => insideitem.NumPoint, new { @class = "form-control" })</th>
+                        <th style="width: 63%">@Html.DisplayFor(m => insideitem.NomPoint, new { @class = "form-control" })</th>
+                        <th style="width: 7%">@Html.DisplayFor(m => Model.resultats[compt].Note, new { @class = "form-control" })</th>
+                        <th style="width: 25%">@Html.DisplayFor(m => Model.resultats[compt].req_comment, new { @class = "form-control" })</th>
+
+                    </tr>
+
+                }
+            </table>
+        }
+
+<a href="javascript:window.print()">Imprimer les resultats du dernier audit </a>
+<link rel="stylesheet" href="@Url.Content("~/Content/print.css")" type="text/css" media="print" />

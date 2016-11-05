@@ -1,0 +1,42 @@
+﻿@model Entities.Models.Point
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Point</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NumPoint)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumPoint)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomPoint)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomPoint)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Coef)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Coef)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PointID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

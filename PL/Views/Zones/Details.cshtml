@@ -1,0 +1,74 @@
+﻿@model Entities.Models.Zone
+
+@{
+    ViewBag.Title = "Détails d'une Zone";
+}
+
+<h2>Détails d'une Zone</h2>
+
+<div>
+    <h4>Zone</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NomZone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomZone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Appartenance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Appartenance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResponsableHierarZone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResponsableHierarZone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PiloteZoneObli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PiloteZoneObli.NomPilote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PiloteZoneOpti)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PiloteZoneOpti.NomPilote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeZone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypeZone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateIntroBaseZone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateIntroBaseZone)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Modifier", "Edit", new { id = Model.ZoneId }) |*@
+    @Html.ActionLink("Retour à la liste", "Index")
+</p>

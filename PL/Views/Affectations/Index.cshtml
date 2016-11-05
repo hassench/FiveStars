@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Entities.Models.Audit>
+
+
+@{
+    ViewBag.Title = "Affectations";
+}
+
+<h2>Les Audits de cette semaine</h2>
+<hr />
+@if (Model == null)
+{
+
+
+    <h4>Il ny'a pas encore des audits</h4>
+}
+else
+{
+    <div style="text-align:center;">
+        <img style="display: inline-block; height: auto; max-width: 100%;" src="@Url.Action("DrawChart")" alt="Drawing chart with HTML Helper" />
+    </div>
+    <hr />
+    <h2>Les Affectations</h2>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.zone.NomZone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.zone.PiloteZoneObli)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.zone.PiloteZoneOpti))
+            </th>
+            <th>
+                Auditeur
+            </th>
+            <th>
+                Jour
+            </th>
+            <th>
+                Type
+            </th>
+
+            @*<th></th>*@
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.zone.NomZone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.zone.PiloteZoneObli.NomPilote)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.zone.PiloteZoneOpti.NomPilote)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.auditeur.Nom)  @Html.DisplayFor(modelItem => item.auditeur.Prenom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AuditDay)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypeAudit)
+                </td>
+                @*<td>
+                        @Html.ActionLink("You 're going to do something here eventually", "Edit", new { id = item.AuditId })
+                    </td>*@
+            </tr>
+        }
+
+    </table>
+}

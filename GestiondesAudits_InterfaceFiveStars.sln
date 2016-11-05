@@ -1,0 +1,92 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{B8055230-5FF3-40D1-8815-0808FBF25BE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{DA0A5C4B-B966-494B-AF88-A75D3116651F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PL", "PL\PL.csproj", "{01F6BEDE-1BAC-45C3-9F5A-523856546928}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PL.Tests", "PL.Tests\PL.Tests.csproj", "{8147F634-75FE-4B20-9338-EADD445CED05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsService", "WindowsService\WindowsService.csproj", "{16DE4A81-9392-41E2-9D61-08EA3F192131}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{3D4548BC-73F1-46F6-BE51-4B31DBF58B74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTest", "ConsoleTest\ConsoleTest.csproj", "{8A42C2E7-C8E5-4907-B3E9-6828CBE56B67}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{83ED772E-75E6-4DB7-A874-29C4E67E6272}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B8055230-5FF3-40D1-8815-0808FBF25BE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8055230-5FF3-40D1-8815-0808FBF25BE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8055230-5FF3-40D1-8815-0808FBF25BE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8055230-5FF3-40D1-8815-0808FBF25BE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA0A5C4B-B966-494B-AF88-A75D3116651F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA0A5C4B-B966-494B-AF88-A75D3116651F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA0A5C4B-B966-494B-AF88-A75D3116651F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA0A5C4B-B966-494B-AF88-A75D3116651F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01F6BEDE-1BAC-45C3-9F5A-523856546928}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01F6BEDE-1BAC-45C3-9F5A-523856546928}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01F6BEDE-1BAC-45C3-9F5A-523856546928}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01F6BEDE-1BAC-45C3-9F5A-523856546928}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8147F634-75FE-4B20-9338-EADD445CED05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8147F634-75FE-4B20-9338-EADD445CED05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8147F634-75FE-4B20-9338-EADD445CED05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8147F634-75FE-4B20-9338-EADD445CED05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16DE4A81-9392-41E2-9D61-08EA3F192131}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16DE4A81-9392-41E2-9D61-08EA3F192131}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16DE4A81-9392-41E2-9D61-08EA3F192131}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16DE4A81-9392-41E2-9D61-08EA3F192131}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D4548BC-73F1-46F6-BE51-4B31DBF58B74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D4548BC-73F1-46F6-BE51-4B31DBF58B74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D4548BC-73F1-46F6-BE51-4B31DBF58B74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D4548BC-73F1-46F6-BE51-4B31DBF58B74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A42C2E7-C8E5-4907-B3E9-6828CBE56B67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A42C2E7-C8E5-4907-B3E9-6828CBE56B67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A42C2E7-C8E5-4907-B3E9-6828CBE56B67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A42C2E7-C8E5-4907-B3E9-6828CBE56B67}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 8
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://charefhassen.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = BL\\BL.csproj
+		SccProjectName1 = BL
+		SccLocalPath1 = BL
+		SccProjectUniqueName2 = ConsoleTest\\ConsoleTest.csproj
+		SccProjectName2 = ConsoleTest
+		SccLocalPath2 = ConsoleTest
+		SccProjectUniqueName3 = DAL\\DAL.csproj
+		SccProjectName3 = DAL
+		SccLocalPath3 = DAL
+		SccProjectUniqueName4 = Entities\\Entities.csproj
+		SccProjectName4 = Entities
+		SccLocalPath4 = Entities
+		SccProjectUniqueName5 = PL.Tests\\PL.Tests.csproj
+		SccProjectName5 = PL.Tests
+		SccLocalPath5 = PL.Tests
+		SccProjectUniqueName6 = PL\\PL.csproj
+		SccProjectName6 = PL
+		SccLocalPath6 = PL
+		SccProjectUniqueName7 = WindowsService\\WindowsService.csproj
+		SccProjectName7 = WindowsService
+		SccLocalPath7 = WindowsService
+	EndGlobalSection
+EndGlobal

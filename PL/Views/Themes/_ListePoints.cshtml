@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Entities.Models.Point>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NumPoint)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomPoint)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Coef)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumPoint)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomPoint)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Coef)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", "Points", new { id = item.PointID }, new { id = item.PointID }) |
+            @Html.ActionLink("Details", "Details", "Points", new { id = item.PointID }, new { id = item.PointID }) |
+            @Html.ActionLink("Delete", "Delete", "Points", new { id = item.PointID }, new { id = item.PointID })
+        </td>
+    </tr>
+}
+
+</table>

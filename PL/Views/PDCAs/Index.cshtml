@@ -1,0 +1,92 @@
+﻿@model Entities.ViewModels.PilotepdcaViewModel
+
+@{
+    ViewBag.Title = "Interface Pilote";
+}
+
+<h2>Interface Pilote</h2>
+<br />
+@if (!Model.certificationasked)
+{
+<a hidden="hidden" href="/Pilote/demandercertification/@Model.zone.ZoneId" id="certifier"></a>
+<button style="display: inline-block;" class="btn btn-primary btn-lg " onclick="certifier()">Demander Certification</button>
+<hr/>
+}
+<h3>Les PDCAs de la zone : "@Model.zone.NomZone"</h3>
+
+@if (Model.pdcas != null)
+{
+
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.pdcas.First().UF)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pdcas.First().NLigne)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pdcas.First().Machine)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pdcas.First().Theme)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pdcas.First().Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pdcas.First().Anomalie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pdcas.First().Criticite)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pdcas.First().Action)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pdcas.First().Pilote)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pdcas.First().Delai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pdcas.First().DateRealise)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pdcas.First().VerifEfficacite)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pdcas.First().Commentaire)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pdcas.First().P)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pdcas.First().D)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pdcas.First().C)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.pdcas)
+        {
+
+            @Html.Partial("~/Views/PDCAs/_PDCAForm.cshtml", item)
+        }
+
+
+    </table>
+}
+else { }
+<script>
+
+    function certifier() {
+
+        var href = $('#certifier').attr('href');
+        window.location.href = href;
+    }
+
+</script>

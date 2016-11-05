@@ -1,0 +1,70 @@
+﻿@model Entities.ViewModels.SuiviViewModel
+
+@{
+    ViewBag.Title = "Les Zones par Appartenenace";
+}
+
+<h2>Les Zones par Appartenenace</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            UF
+        </th>
+        <th>
+            ATR
+        </th>
+        <th>
+            STB1 
+        </th>
+        <th>
+            STB2 
+        </th>
+        <th>
+            ENEL 
+        </th>
+        <th>
+            Process 
+        </th>
+        <th>
+            Maintenance 
+        </th>
+        <th>
+            Magasin
+        </th>
+        <th></th>
+    </tr>
+    @{Entities.Models.Zone zonetemp ;}
+@while (Model.zones.Count != 0)
+{
+    <tr>
+        @for (int i = 0; i < 8; i++)
+        {
+            if (Model.zones.Count != 0)
+            {
+                zonetemp = Model.zones.First();
+                if (zonetemp.Appartenance.Equals(Model.appart[i]))
+                {
+                    <td>
+                        @*@{String url ="/Suivi/Zone/"+zonetemp.ZoneId;}
+                        <a href="@url"> @Html.DisplayFor(modelItem => zonetemp.NomZone)</a>*@
+                        @Html.ActionLink(zonetemp.NomZone, "Zone", new { id = zonetemp.ZoneId })
+                    </td>
+                    Model.zones.Remove(zonetemp);
+                }
+                else
+                {
+                    <td>
+                    </td>
+                }
+                
+            }
+
+
+        }
+
+    </tr>
+}
+
+</table>

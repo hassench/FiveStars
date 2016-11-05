@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Entities.Models.Zone>
+
+@{
+    ViewBag.Title = "Liste des Zones";
+}
+
+<h2>Liste des Zones</h2>
+
+<p>
+    @Html.ActionLink("Ajouter une Zone", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NomZone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Appartenance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResponsableHierarZone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PiloteZoneObli)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PiloteZoneOpti)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TypeZone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateIntroBaseZone)
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomZone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Appartenance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResponsableHierarZone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PiloteZoneObli.NomPilote)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PiloteZoneOpti.NomPilote)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TypeZone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateIntroBaseZone)
+        </td>
+        @*<td>
+            @Html.ActionLink("Modifier", "Edit", new { id=item.ZoneId }) |
+            @Html.ActionLink("Détails", "Details", new { id = item.ZoneId }) |
+            @Html.ActionLink("Supprimer", "Delete", new { id=item.ZoneId })
+        </td>*@
+    </tr>
+}
+
+</table>

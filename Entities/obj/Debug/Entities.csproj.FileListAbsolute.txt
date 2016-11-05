@@ -1,0 +1,14 @@
+C:\Users\Hassen\Documents\Visual Studio 2015\Projects\Five Stars\ASP.NET Wep App\GestiondesAudits_InterfaceFiveStars\Entities\bin\Debug\Entities.dll.config
+C:\Users\Hassen\Documents\Visual Studio 2015\Projects\Five Stars\ASP.NET Wep App\GestiondesAudits_InterfaceFiveStars\Entities\bin\Debug\Entities.dll
+C:\Users\Hassen\Documents\Visual Studio 2015\Projects\Five Stars\ASP.NET Wep App\GestiondesAudits_InterfaceFiveStars\Entities\bin\Debug\Entities.pdb
+C:\Users\Hassen\Documents\Visual Studio 2015\Projects\Five Stars\ASP.NET Wep App\GestiondesAudits_InterfaceFiveStars\Entities\bin\Debug\EntityFramework.dll
+C:\Users\Hassen\Documents\Visual Studio 2015\Projects\Five Stars\ASP.NET Wep App\GestiondesAudits_InterfaceFiveStars\Entities\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Hassen\Documents\Visual Studio 2015\Projects\Five Stars\ASP.NET Wep App\GestiondesAudits_InterfaceFiveStars\Entities\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Hassen\Documents\Visual Studio 2015\Projects\Five Stars\ASP.NET Wep App\GestiondesAudits_InterfaceFiveStars\Entities\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Hassen\Documents\Visual Studio 2015\Projects\Five Stars\ASP.NET Wep App\GestiondesAudits_InterfaceFiveStars\Entities\bin\Debug\EntityFramework.xml
+C:\Users\Hassen\Documents\Visual Studio 2015\Projects\Five Stars\ASP.NET Wep App\GestiondesAudits_InterfaceFiveStars\Entities\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Hassen\Documents\Visual Studio 2015\Projects\Five Stars\ASP.NET Wep App\GestiondesAudits_InterfaceFiveStars\Entities\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Hassen\Documents\Visual Studio 2015\Projects\Five Stars\ASP.NET Wep App\GestiondesAudits_InterfaceFiveStars\Entities\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Hassen\Documents\Visual Studio 2015\Projects\Five Stars\ASP.NET Wep App\GestiondesAudits_InterfaceFiveStars\Entities\obj\Debug\Entities.csprojResolveAssemblyReference.cache
+C:\Users\Hassen\Documents\Visual Studio 2015\Projects\Five Stars\ASP.NET Wep App\GestiondesAudits_InterfaceFiveStars\Entities\obj\Debug\Entities.dll
+C:\Users\Hassen\Documents\Visual Studio 2015\Projects\Five Stars\ASP.NET Wep App\GestiondesAudits_InterfaceFiveStars\Entities\obj\Debug\Entities.pdb

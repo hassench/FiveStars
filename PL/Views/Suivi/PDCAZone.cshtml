@@ -1,0 +1,92 @@
+﻿@model Entities.ViewModels.ResultsViewModel
+@{
+    ViewBag.Title = "PDCAZone";
+}
+<script src="~/Scripts/jquery-2.1.1.js"></script>
+@*<script src="~/Scripts/jquery.scrollTo.js"></script>*@
+<script>
+   
+    //$.fn.scrollTo = function (target, options, callback) {
+    //    if (typeof options == 'function' && arguments.length == 2) { callback = options; options = target; }
+    //    var settings = $.extend({
+    //        scrollTarget: target,
+    //        offsetTop: 50,
+    //        duration: 500,
+    //        easing: 'swing'
+    //    }, options);
+    //    return this.each(function () {
+    //        var scrollPane = $(this);
+    //        var scrollTarget = (typeof settings.scrollTarget == "number") ? settings.scrollTarget : $(settings.scrollTarget);
+    //        var scrollY = (typeof scrollTarget == "number") ? scrollTarget : scrollTarget.offset().top + scrollPane.scrollTop() - settings.offsetTop;
+    //        scrollPane.animate({ scrollTop: scrollY }, settings.duration, settings.easing, function () {
+    //            if (typeof callback == 'function') { callback.call(this); }
+    //        });
+    //    });
+    //}
+
+    $(document).ready(function () {
+        $('@("#" + @ViewBag.idResultat)').filter(function () {
+            var $this = $(this);
+            return $this.css("color", "rgba(255, 0, 0, 1)")
+            //&& $this.css("position", "relative")
+            && $this.css("padding-top", "400px");
+        });
+        var documentBody = document.body;
+        $(documentBody).animate({ scrollTop: $('@("#" + @ViewBag.idResultat)').offset().top - 100 }, 2000);
+
+        var documentBody = document.documentElement;
+        $(documentBody).animate({ scrollTop: $('@("#" + @ViewBag.idResultat)').offset().top - 100 }, 2000);
+       
+        @*$('@("#" + @ViewBag.idResultat)').scrollTo('@("#" + @ViewBag.idResultat)');*@
+    });
+</script>
+<h2>PDCAZone</h2>
+
+
+
+
+@{
+    ViewBag.Title = "Dernier Resultats de la Zone @Model.audit.zone.NomZone";
+}
+
+<h2>Dernier Resultats de la Zone @Model.audit.zone.NomZone</h2>
+
+
+
+
+@{int compt = -1;}
+@foreach (Entities.Models.Theme item in Model.themes)
+{
+    <table class="table">
+        <tr>
+            <th></th>
+        </tr>
+        <tr>
+            <th>@Html.DisplayFor(modelItem => item.info)</th>
+            <th>Passing Grade @Html.DisplayFor(modelItem => item.Passinggrade) %</th>
+
+        </tr>
+    </table>
+    <table style="text-align:left" class="table">
+        <tr>
+            <th></th>
+        </tr>
+        @foreach (Entities.Models.Point insideitem in item.points)
+        {
+            compt++;
+
+            <tr id="@Model.resultats[compt].ResultatId">
+
+                <th style="width: 5%">@Html.DisplayFor(m => insideitem.NumPoint, new { @class = "form-control" })</th>
+                <th style="width: 63%">@Html.DisplayFor(m => insideitem.NomPoint, new { @class = "form-control" })</th>
+                <th style="width: 7%">@Html.DisplayFor(m => Model.resultats[compt].Note, new { @class = "form-control" })</th>
+                <th style="width: 25%">@Html.DisplayFor(m => Model.resultats[compt].req_comment, new { @class = "form-control" })</th>
+
+            </tr>
+
+        }
+    </table>
+}
+
+
+

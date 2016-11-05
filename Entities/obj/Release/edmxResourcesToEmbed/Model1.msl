@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BDInterfaceFiveStarsModelStoreContainer" CdmEntityContainer="BDInterfaceFiveStarsEntities">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="BDInterfaceFiveStarsModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="BDInterfaceFiveStarsModel.AspNetRoles">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="BDInterfaceFiveStarsModel.AspNetUserClaims">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="BDInterfaceFiveStarsModel.AspNetUserLogins">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="BDInterfaceFiveStarsModel.AspNetUsers">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Auditeurs">
+      <EntityTypeMapping TypeName="BDInterfaceFiveStarsModel.Auditeurs">
+        <MappingFragment StoreEntitySet="Auditeurs">
+          <ScalarProperty Name="AuditeurId" ColumnName="AuditeurId" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+          <ScalarProperty Name="Affectation" ColumnName="Affectation" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="DateIntroBaseAuditeur" ColumnName="DateIntroBaseAuditeur" />
+          <ScalarProperty Name="Auditeur_AuditeurId" ColumnName="Auditeur_AuditeurId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Audits">
+      <EntityTypeMapping TypeName="BDInterfaceFiveStarsModel.Audits">
+        <MappingFragment StoreEntitySet="Audits">
+          <ScalarProperty Name="AuditId" ColumnName="AuditId" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+          <ScalarProperty Name="TypeAudit" ColumnName="TypeAudit" />
+          <ScalarProperty Name="auditeur_AuditeurId" ColumnName="auditeur_AuditeurId" />
+          <ScalarProperty Name="semaine_SemaineId" ColumnName="semaine_SemaineId" />
+          <ScalarProperty Name="zone_ZoneId" ColumnName="zone_ZoneId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Points">
+      <EntityTypeMapping TypeName="BDInterfaceFiveStarsModel.Points">
+        <MappingFragment StoreEntitySet="Points">
+          <ScalarProperty Name="PointID" ColumnName="PointID" />
+          <ScalarProperty Name="NumPoint" ColumnName="NumPoint" />
+          <ScalarProperty Name="Coef" ColumnName="Coef" />
+          <ScalarProperty Name="theme_ThemeId" ColumnName="theme_ThemeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Resultats">
+      <EntityTypeMapping TypeName="BDInterfaceFiveStarsModel.Resultats">
+        <MappingFragment StoreEntitySet="Resultats">
+          <ScalarProperty Name="ResultatId" ColumnName="ResultatId" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="req_comment" ColumnName="req_comment" />
+          <ScalarProperty Name="audit_AuditId" ColumnName="audit_AuditId" />
+          <ScalarProperty Name="point_PointID" ColumnName="point_PointID" />
+          <ScalarProperty Name="theme_ThemeId" ColumnName="theme_ThemeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Semaines">
+      <EntityTypeMapping TypeName="BDInterfaceFiveStarsModel.Semaines">
+        <MappingFragment StoreEntitySet="Semaines">
+          <ScalarProperty Name="SemaineId" ColumnName="SemaineId" />
+          <ScalarProperty Name="Datedebut" ColumnName="Datedebut" />
+          <ScalarProperty Name="Datefin" ColumnName="Datefin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Themes">
+      <EntityTypeMapping TypeName="BDInterfaceFiveStarsModel.Themes">
+        <MappingFragment StoreEntitySet="Themes">
+          <ScalarProperty Name="ThemeId" ColumnName="ThemeId" />
+          <ScalarProperty Name="Passinggrade" ColumnName="Passinggrade" />
+          <ScalarProperty Name="info" ColumnName="info" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zones">
+      <EntityTypeMapping TypeName="BDInterfaceFiveStarsModel.Zones">
+        <MappingFragment StoreEntitySet="Zones">
+          <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
+          <ScalarProperty Name="NomZone" ColumnName="NomZone" />
+          <ScalarProperty Name="Appartenance" ColumnName="Appartenance" />
+          <ScalarProperty Name="ResponsableHierarZone" ColumnName="ResponsableHierarZone" />
+          <ScalarProperty Name="PiloteZoneObli" ColumnName="PiloteZoneObli" />
+          <ScalarProperty Name="PiloteZoneOpti" ColumnName="PiloteZoneOpti" />
+          <ScalarProperty Name="TypeZone" ColumnName="TypeZone" />
+          <ScalarProperty Name="DateIntroBaseZone" ColumnName="DateIntroBaseZone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="BDInterfaceFiveStarsModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetRoles">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+      <EndProperty Name="AspNetUsers">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

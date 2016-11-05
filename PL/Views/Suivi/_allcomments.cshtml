@@ -1,0 +1,44 @@
+﻿@model Entities.Models.Zone
+
+@if (Model.comments.Count()==0)
+{
+    <h6>Il n'y a pas encore de commentaires!</h6>
+    <hr />
+}
+
+    @foreach (Entities.Models.Comment comment in Model.comments)
+    {
+        <div>
+            <h6>Commentaire</h6>
+            <hr />
+            <dl class="dl-horizontal">
+
+
+                <dt>
+                    @Html.DisplayNameFor(model => comment.user)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => comment.user.UserName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => comment.Subject)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => comment.Subject)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => comment.Body)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => comment.Body)
+                </dd>
+
+            </dl>
+        </div>
+
+    }

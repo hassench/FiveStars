@@ -1,0 +1,80 @@
+﻿@model Entities.Models.Zone
+
+@{
+    ViewBag.Title = "Supprimer une Zone";
+}
+
+<h2>Supprimer une Zone</h2>
+
+<h3>Etes-vous sûr de vouloir supprimer cette Zone?</h3>
+<div>
+    <h4>Zone</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NomZone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomZone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Appartenance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Appartenance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResponsableHierarZone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResponsableHierarZone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PiloteZoneObli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PiloteZoneObli.NomPilote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PiloteZoneOpti)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PiloteZoneOpti.NomPilote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeZone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypeZone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateIntroBaseZone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateIntroBaseZone)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Retour à la liste", "Index")
+        </div>
+    }
+</div>

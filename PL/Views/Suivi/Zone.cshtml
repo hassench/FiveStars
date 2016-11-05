@@ -1,0 +1,46 @@
+﻿@model Entities.ViewModels.ZoneViewModel
+
+@{
+    ViewBag.Title = @Model.zone.NomZone;
+}
+
+<h2>Interface de la Zone @Model.zone.NomZone</h2>
+<hr />
+@if (Model.niveau != null)
+{
+
+    string levelimageurl = "~/Content/Images/stars/" + Model.niveau + ".bmp";
+    <div style="text-align:center;">
+        <div style="margin:auto;">
+            <h3>Niveau 5 Stars</h3><img width="150" height="150" src="@Url.Content(levelimageurl)" title="Niveau 5 stars" />
+        </div>
+        <div>
+            <h3>la Note de la Zone est <b>@Model.Note</b> </h3>
+        </div>
+    </div>
+    <hr />
+    <div>
+        <b style="font-size:large">@Html.ActionLink("les résultats du dernier audit", "DernierResultats", new { id = Model.zone.ZoneId })</b>
+    </div>
+    <hr />
+    <div style="text-align:center;">
+        <img style="margin:auto;" src="@Url.Action("DrawChart" ,new { zoneid = Model.zone.ZoneId } )" />
+    </div>
+    <b style="font-size:large">
+        @Html.ActionLink("Les PDCAs de cette zone", "Zone", "PDCAs", new { id = Model.zone.ZoneId }, null)
+    </b>
+    <hr />
+}
+else
+{
+    <b style="font-size:large"> Aucun audit pour cette zone encore</b>
+
+}
+
+@Html.Partial("_allcomments", Model.zone)
+
+
+@{var c = new Entities.ViewModels.CommentViewModel();
+c.ZoneId = Model.zone.ZoneId;}
+
+@Html.Partial("_commentform", c)

@@ -1,0 +1,45 @@
+﻿@model Entities.ViewModels.CommentViewModel
+
+@if (!User.Identity.IsAuthenticated)
+{
+    <h6> Vous devez être connecté pour laisser un commentaire!</h6>
+}
+@if (User.Identity.IsAuthenticated)
+{
+    <h5>Laisser un commentaire</h5>
+    
+    using (Html.BeginForm("post", "Comment"))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+
+            <hr />
+            @Html.ValidationSummary(true)
+
+            <input hidden id="ZoneId" name="ZoneId" type="text" value="@Model.ZoneId" />
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.comment.Subject, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.comment.Subject)
+                    @Html.ValidationMessageFor(model => model.comment.Subject)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.comment.Body, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.comment.Body, new { cols = 50, rows = 5 })
+                    @Html.ValidationMessageFor(model => model.comment.Body)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Post" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+}

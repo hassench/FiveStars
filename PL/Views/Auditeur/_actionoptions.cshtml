@@ -1,0 +1,47 @@
+﻿@model PL.Controllers.InterfaceAuditeurActionOptionViewModel
+
+@if (Model.audit.isCompleted)
+{
+    <td>Cet audit n'est pas etre délégué</td>
+    <td>
+        Les résultats de l audit sont soumis!
+    </td>
+}
+else if (Model.audit.isInProgress)
+{
+    <td>Cet audit n'est pas etre délégué</td>
+    <td style="overflow:hidden; white-space:nowrap">
+        @Html.ActionLink("Modifier les résultats", "Resultats", new { id = Model.audit.AuditId }, new { @id = "modification", @hidden = "true" })
+        @Html.ActionLink("soumettre les résultats", "soumettre", new { id = Model.audit.AuditId }, new { @id = "Soumission", @hidden = "true" })
+        <button style="display: inline-block;" class="btn btn-default" id="modificationb" onclick="modifier()">Modifier les résultats</button>
+        <button style="display: inline-block;" class="btn btn-default" id="soumissionb" onclick="soumettre(@Model.audit.AuditId)">Soumettre les résultats</button>
+    </td>
+
+}
+//this is so we can test if you made delegation demand for this audit
+else if (Model.demandes.Where(a => a.Concernedaudit.AuditId == Model.audit.AuditId).FirstOrDefault<Entities.Models.Delegation>() != null)
+{
+    <td>
+        En attente d'approbation de la délégation
+    </td>
+    <td>
+       
+    </td>
+}
+else 
+{
+    <td>
+        @using (Html.BeginForm("demanderdelegation", "Delegation"))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <input hidden id="AuditId" name="AuditId" type="text" value="@Model.audit.AuditId" />
+            @:Déléguer à  @Html.DropDownListFor(modelItem => Model.audit, Model.auditeursselectlist)
+    <input type="submit"  value="Confirm" class="btn btn-default" />
+        }
+    </td>
+    <td>
+        @Html.ActionLink("Insérer les résultats", "Resultats", new { id = Model.audit.AuditId }, new { @id = "insertion", @hidden = "true" })
+        <button class="btn btn-default" onclick="inserer()">Insérer les résultats</button>
+    </td>
+}

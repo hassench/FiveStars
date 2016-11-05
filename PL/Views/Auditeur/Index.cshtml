@@ -1,0 +1,160 @@
+﻿@model PL.Controllers.InterfaceAuditeurViewModel
+
+@{
+    ViewBag.Title = "Interface Auditeur";
+}
+
+
+
+@if (Model.auditsderniersemaine.Count != 0)
+{
+
+    <h2>Audits qui n'ont pas été faites la semaine dernière</h2>
+    <table class="table">
+        <tr>
+            <th>
+                Nom de la zone
+            </th>
+            <th>
+                Nom du Pilote de la Zone
+            </th>
+            <th>
+                Nom d'un autre Pilote de la Zone (Optionelle)
+            </th>
+
+            <th>
+                Jour
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model.auditsderniersemaine)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.zone.NomZone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.zone.PiloteZoneObli.NomPilote)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.zone.PiloteZoneOpti.NomPilote)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AuditDay)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+    <hr />
+}
+<h2>Les Audits de @User.Identity.Name cette semaine</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Nom de la zone
+        </th>
+        <th>
+            Nom du Pilote de la Zone
+        </th>
+        <th>
+            Nom d'un autre Pilote de la Zone (Optionelle)
+        </th>
+
+        <th>
+            Jour
+        </th>
+        <th>
+            Heure
+        </th>
+        <th>Demande de délégation</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var item in Model.audits)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.zone.NomZone)
+            </td>
+            <td>Hassen
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.zone.PiloteZoneOpti.NomPilote)
+            </td>
+            <td></td>
+            <td></td>
+            @Html.Partial("~/Views/Auditeur/_actionoptions.cshtml", new PL.Controllers.InterfaceAuditeurActionOptionViewModel { demandes = Model.demandes, audit = item, auditeursselectlist = Model.auditeursselectlist })
+        </tr>
+    }
+
+</table>
+
+@if (Model.offres.Count != 0)
+{
+    <hr />
+    <h2>Les demandes de délégations </h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                Délégateur
+            </th>
+
+            <th>
+                Nom de la Zone
+            </th>
+
+            <th>
+                Décision
+            </th>
+        </tr>
+
+        @foreach (var item in Model.offres)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Delegator.Nom) @Html.DisplayFor(modelItem => item.Delegator.Prenom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Concernedaudit.zone.NomZone)
+                </td>
+                <td>
+                    @Html.ActionLink("Accepter la demande ", "accepterdemandedelegation", "Delegation", new { id = item.DelegationId }, null) -- @Html.ActionLink("Refuser la demande ", "refuserdemandedelegation", "Delegation", new { id = item.DelegationId }, null)
+                </td>
+            </tr>
+        }
+    </table>
+}
+<script>
+    function soumettre(id) {
+
+        if (confirm("Confirmer la soumission?\nVeuillez patienter, cela peut prendre quelques secondes pour envoyer les résultats par e-mail") == true) {
+            $('#soumissionb').attr("disabled", true);
+            $('#modificationb').attr("disabled", true);
+            //$.ajax('/Auditeur/Soumettre/' + id).done(function () { location.reload(); });
+            var href = $('#Soumission').attr('href');
+            window.location.href = href;
+
+        } else {
+
+        }
+
+    }
+
+    function modifier() {
+        
+        var href = $('#modification').attr('href');
+        window.location.href = href;
+    }
+
+    function inserer() {
+
+        var href = $('#insertion').attr('href');
+        window.location.href = href;
+    }
+</script>

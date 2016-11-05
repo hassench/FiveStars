@@ -1,0 +1,41 @@
+﻿@model Entities.Models.Theme
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Theme</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Passinggrade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Passinggrade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.info)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.info)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ThemeId }) |
+    @Html.ActionLink("Back to List", "Index")
+    @Html.Partial("_ListePoints", Model.points)
+    @{ViewBag.lastNum = Model.points.Last().NumPoint;}
+    @{
+        var p = new Entities.Models.Point();
+        p.theme = Model;
+    }
+    @Html.Partial("_FormCreatePoint", p)
+</p>

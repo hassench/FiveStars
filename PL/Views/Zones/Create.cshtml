@@ -1,0 +1,140 @@
+﻿@model Entities.ViewModels.ZoneAddViewModel
+
+@{
+    ViewBag.Title = "Ajouter une Zone";
+}
+
+<h2>Ajouter une Zone</h2>
+<div class="col-lg-push-6">
+    <div class="well bs-component">
+        @using (Html.BeginForm("Create", "Zones", FormMethod.Post, new { @class = "form-horizontal" }))
+        {<fieldset>
+            <legend>Zone</legend>
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                @Html.ValidationSummary(false, "", new { @class = "text-danger form-horizontal" })
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NomZone, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.NomZone, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.NomZone, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Appartenance, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <select class="form-control" id="Appartenance" name="Appartenance">
+                            <option value="UF">UF</option>
+                            <option value="ATR">ATR</option>
+                            <option value="STB1">STB1</option>
+                            <option value="STB2">STB2</option>
+                            <option value="ENEL">ENEL</option>
+                            <option value="PROCESS">PROCESS</option>
+                            <option value="Maintenance">Maintenance</option>
+                            <option value="Magazin">Magazin</option>
+                        </select>
+                        @Html.ValidationMessageFor(model => model.Appartenance, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ResponsableHierarZone, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ResponsableHierarZone, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ResponsableHierarZone, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PiloteZoneObli, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.PiloteZoneObli, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PiloteZoneObli, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.EmailPObli, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.EmailPObli, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PasswordPObli, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.PasswordPObli, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ConfirmPasswordPObli, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.ConfirmPasswordPObli, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PiloteZoneOpti, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.PiloteZoneOpti, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PiloteZoneOpti, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.EmailPOpti, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.EmailPOpti, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PasswordPOpti, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.PasswordPOpti, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ConfirmPasswordPOpti, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.ConfirmPasswordPOpti, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TypeZone, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <select class="form-control" id="TypeZone" name="TypeZone">
+                            <option value="UF">Bureaux</option>
+                            <option value="ATR">Atelier</option>
+                            <option value="STB1">Extériur</option>
+
+
+                        </select>
+                        @Html.ValidationMessageFor(model => model.TypeZone, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <button class="btn btn-default">Annuler</button>
+                        <button type="submit" class="btn btn-primary">Créer</button>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        }
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Retour à la liste", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

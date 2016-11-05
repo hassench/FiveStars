@@ -1,0 +1,214 @@
+﻿@model Entities.Models.PDCA
+
+<script src="~/Scripts/jquery-2.1.1.js"></script>
+@{
+    string Criticite = String.Concat("Criticite", @Model.PDCAId.ToString());
+    string UF = String.Concat("UF", @Model.PDCAId.ToString());
+    string NLigne = String.Concat("NLigne", @Model.PDCAId.ToString());
+    string Machine = String.Concat("Machine", @Model.PDCAId.ToString());
+    string Pilote = String.Concat("Pilote", @Model.PDCAId.ToString());
+    string VerifEfficacite = String.Concat("VerifEfficacite", @Model.PDCAId.ToString());
+    string Theme = String.Concat("Theme", @Model.PDCAId.ToString());
+
+}
+@using (Html.BeginForm("Edit","PDCAs"@*,new AjaxOptions{HttpMethod="get"}*@))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.PDCAId)
+
+
+    <tr>
+
+        <td>
+            <select id="@(UF)" name="UF">
+                <option value="ATR">ATR</option>
+                <option value="STB1">STB1</option>
+                <option value="STB2">STB2</option>
+                <option value="Maintenance MP">Maintenance MP</option>
+                <option value="ADT">ADT</option>
+            </select>
+            @*@Html.EditorFor(model => model.UF)
+                @Html.ValidationMessageFor(model => model.UF, "", new { @class = "text-danger" })*@
+
+        </td>
+
+        <td>
+            <select id="@(NLigne)" name="NLigne">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+            @*@Html.EditorFor(model => model.NLigne)
+                @Html.ValidationMessageFor(model => model.NLigne, "", new { @class = "text-danger" })*@
+
+        </td>
+
+        <td>
+            <select name="Machine" id="@(Machine)">
+                <option value="Axial">Axial</option>
+                <option value="CM - 1">CM - 1</option>
+                <option value="CM - 2">CM - 2</option>
+                <option value="Convoyeur">Convoyeur</option>
+                <option value="D3">D3</option>
+                <option value="D4-1">D4-1</option>
+                <option value="D4-2">D4-2</option>
+                <option value="DEK">DEK</option>
+                <option value="Dépileur à gravité">Dépileur à gravité</option>
+            </select>
+            @*@Html.EditorFor(model => model.Machine)
+                @Html.ValidationMessageFor(model => model.Machine, "", new { @class = "text-danger" })*@
+
+        </td>
+
+        <td>
+            <select id="@(Theme)" name="Theme">
+                <option value="RCM">RCM</option>
+                <option value="AFAQ">AFAQ</option>
+                <option value="Inventaire S18">Inventaire S18</option>
+                <option value="REP ADT">REP ADT</option>
+            </select>
+            @*@Html.EditorFor(model => model.Theme)
+                @Html.ValidationMessageFor(model => model.Theme, "", new { @class = "text-danger" })*@
+
+        </td>
+
+        <td>
+
+            @Html.EditorFor(model => model.Date)
+            @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+
+        </td>
+
+
+        <td class="form-group">
+
+            @Html.EditorFor(model => model.Anomalie)
+            @Html.ValidationMessageFor(model => model.Anomalie, "", new { @class = "text-danger" })
+        </td>
+
+        <td class="form-group">
+            <select name="Criticite" id="@(Criticite)">
+                <option value="Importante">Importante</option>
+                <option value="Critique">Critique</option>
+                <option value="Vitale">Vitale</option>
+                <option value="Test">Test</option>
+            </select>
+
+
+
+            @Html.ValidationMessageFor(model => model.Criticite, "", new { @class = "text-danger " })
+
+        </td>
+
+        <td class="form-group">
+
+            @Html.EditorFor(model => model.Action)
+            @Html.ValidationMessageFor(model => model.Action, "", new { @class = "text-danger" })
+
+        </td>
+
+        <td>
+            <select name="Pilote" id="@(Pilote)">
+                <option value="Gestion">Gestion</option>
+                <option value="CE. MHCMS">CE. MHCMS</option>
+                <option value="CE. Prév">CE. Prév</option>
+                <option value="Ing. ADT">Ing. ADT</option>
+                <option value="Ing. STB2">Ing. STB2</option>
+                <option value="Ing. Energie">Ing. Energie</option>
+                <option value="Méthodes">Méthodes</option>
+                <option value="Resp. Maint">Resp. Maint</option>
+                <option value="Curative CMS">Curative CMS</option>
+            </select>
+            @*@Html.LabelFor(model => model.Pilote, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Pilote)
+                    @Html.ValidationMessageFor(model => model.Pilote, "", new { @class = "text-danger" })
+                </div>*@
+        </td>
+
+        <td class="form-group">
+            @Html.EditorFor(model => model.Delai)
+            @Html.ValidationMessageFor(model => model.Delai, "", new { @class = "text-danger" })
+        </td>
+
+        <td class="form-group">
+            @Html.EditorFor(model => model.DateRealise)
+            @Html.ValidationMessageFor(model => model.DateRealise, "", new { @class = "text-danger" })
+        </td>
+
+        <td>
+            <select id="@(VerifEfficacite)" name="VerifEfficacite">
+                <option value="OK">OK</option>
+                <option value="NOK">NOK</option>
+                <option value="Non faisable">Non faisable</option>
+                <option value="Attente">Attente</option>
+                <option value="à suivre">à suivre</option>
+            </select>
+            @*@Html.LabelFor(model => model.VerifEfficacite, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.VerifEfficacite)
+                    @Html.ValidationMessageFor(model => model.VerifEfficacite, "", new { @class = "text-danger" })
+                </div>*@
+        </td>
+
+        <td class="form-group">
+
+            @Html.EditorFor(model => model.Commentaire)
+            @Html.ValidationMessageFor(model => model.Commentaire, "", new { @class = "text-danger" })
+        </td>
+
+        <td class="form-group">
+
+            @Html.EditorFor(model => model.P)
+            @Html.ValidationMessageFor(model => model.P, "", new { @class = "text-danger" })
+        </td>
+
+        <td class="form-group">
+
+            @Html.EditorFor(model => model.D)
+            @Html.ValidationMessageFor(model => model.D, "", new { @class = "text-danger" })
+        </td>
+
+        <td class="form-group">
+
+            @Html.EditorFor(model => model.C)
+            @Html.ValidationMessageFor(model => model.C, "", new { @class = "text-danger" })
+        </td>
+
+        <td class="form-group">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </td>
+        <td>
+            @Html.ActionLink("Voir le résultat correspendant", "PDCAZone", "Suivi", new { idAudit = Model.resultat.audit.AuditId, idResultat = Model.resultat.ResultatId }, null)
+        </td>
+    </tr>
+
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script>
+
+
+
+    @*@{Html.Display(id);}*@
+    $('@("#" + Criticite)').val('@Model.Criticite');
+    $('@("#" + UF)').val('@Model.UF');
+    $('@("#" + NLigne)').val('@Model.NLigne');
+    $('@("#" + Machine)').val('@Model.Machine');
+    $('@("#" + Pilote)').val('@Model.Pilote');
+    $('@("#" + VerifEfficacite)').val('@Model.VerifEfficacite');
+    $('@("#" + Theme)').val('@Model.Theme');
+</script>

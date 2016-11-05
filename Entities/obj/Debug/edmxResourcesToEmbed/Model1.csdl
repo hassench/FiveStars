@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BDInterfaceFiveStarsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+  </EntityType>
+  <EntityType Name="Auditeurs">
+    <Key>
+      <PropertyRef Name="AuditeurId" />
+    </Key>
+    <Property Name="AuditeurId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Prenom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Affectation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Telephone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Mail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DateIntroBaseAuditeur" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Auditeur_AuditeurId" Type="Int32" />
+    <NavigationProperty Name="Auditeurs1" Relationship="Self.FK_dbo_Auditeurs_dbo_Auditeurs_Auditeur_AuditeurId" FromRole="Auditeurs" ToRole="Auditeurs1" />
+    <NavigationProperty Name="Auditeurs2" Relationship="Self.FK_dbo_Auditeurs_dbo_Auditeurs_Auditeur_AuditeurId" FromRole="Auditeurs1" ToRole="Auditeurs" />
+    <NavigationProperty Name="Audits" Relationship="Self.FK_dbo_Audits_dbo_Auditeurs_auditeur_AuditeurId" FromRole="Auditeurs" ToRole="Audits" />
+  </EntityType>
+  <EntityType Name="Audits">
+    <Key>
+      <PropertyRef Name="AuditId" />
+    </Key>
+    <Property Name="AuditId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Score" Type="Double" Nullable="false" />
+    <Property Name="TypeAudit" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="auditeur_AuditeurId" Type="Int32" />
+    <Property Name="semaine_SemaineId" Type="Int32" />
+    <Property Name="zone_ZoneId" Type="Int32" />
+    <NavigationProperty Name="Auditeurs" Relationship="Self.FK_dbo_Audits_dbo_Auditeurs_auditeur_AuditeurId" FromRole="Audits" ToRole="Auditeurs" />
+    <NavigationProperty Name="Semaines" Relationship="Self.FK_dbo_Audits_dbo_Semaines_semaine_SemaineId" FromRole="Audits" ToRole="Semaines" />
+    <NavigationProperty Name="Zones" Relationship="Self.FK_dbo_Audits_dbo_Zones_zone_ZoneId" FromRole="Audits" ToRole="Zones" />
+    <NavigationProperty Name="Resultats" Relationship="Self.FK_dbo_Resultats_dbo_Audits_audit_AuditId" FromRole="Audits" ToRole="Resultats" />
+  </EntityType>
+  <EntityType Name="Points">
+    <Key>
+      <PropertyRef Name="PointID" />
+    </Key>
+    <Property Name="PointID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NumPoint" Type="Int32" Nullable="false" />
+    <Property Name="Coef" Type="Int32" Nullable="false" />
+    <Property Name="theme_ThemeId" Type="Int32" />
+    <NavigationProperty Name="Themes" Relationship="Self.FK_dbo_Points_dbo_Themes_theme_ThemeId" FromRole="Points" ToRole="Themes" />
+    <NavigationProperty Name="Resultats" Relationship="Self.FK_dbo_Resultats_dbo_Points_point_PointID" FromRole="Points" ToRole="Resultats" />
+  </EntityType>
+  <EntityType Name="Resultats">
+    <Key>
+      <PropertyRef Name="ResultatId" />
+    </Key>
+    <Property Name="ResultatId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Note" Type="Int32" Nullable="false" />
+    <Property Name="req_comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="audit_AuditId" Type="Int32" />
+    <Property Name="point_PointID" Type="Int32" />
+    <Property Name="theme_ThemeId" Type="Int32" />
+    <NavigationProperty Name="Audits" Relationship="Self.FK_dbo_Resultats_dbo_Audits_audit_AuditId" FromRole="Resultats" ToRole="Audits" />
+    <NavigationProperty Name="Points" Relationship="Self.FK_dbo_Resultats_dbo_Points_point_PointID" FromRole="Resultats" ToRole="Points" />
+    <NavigationProperty Name="Themes" Relationship="Self.FK_dbo_Resultats_dbo_Themes_theme_ThemeId" FromRole="Resultats" ToRole="Themes" />
+  </EntityType>
+  <EntityType Name="Semaines">
+    <Key>
+      <PropertyRef Name="SemaineId" />
+    </Key>
+    <Property Name="SemaineId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Datedebut" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Datefin" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Audits" Relationship="Self.FK_dbo_Audits_dbo_Semaines_semaine_SemaineId" FromRole="Semaines" ToRole="Audits" />
+  </EntityType>
+  <EntityType Name="Themes">
+    <Key>
+      <PropertyRef Name="ThemeId" />
+    </Key>
+    <Property Name="ThemeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Passinggrade" Type="Int32" Nullable="false" />
+    <Property Name="info" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Points" Relationship="Self.FK_dbo_Points_dbo_Themes_theme_ThemeId" FromRole="Themes" ToRole="Points" />
+    <NavigationProperty Name="Resultats" Relationship="Self.FK_dbo_Resultats_dbo_Themes_theme_ThemeId" FromRole="Themes" ToRole="Resultats" />
+  </EntityType>
+  <EntityType Name="Zones">
+    <Key>
+      <PropertyRef Name="ZoneId" />
+    </Key>
+    <Property Name="ZoneId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NomZone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Appartenance" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ResponsableHierarZone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PiloteZoneObli" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PiloteZoneOpti" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TypeZone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DateIntroBaseZone" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Audits" Relationship="Self.FK_dbo_Audits_dbo_Zones_zone_ZoneId" FromRole="Zones" ToRole="Audits" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Auditeurs_dbo_Auditeurs_Auditeur_AuditeurId">
+    <End Role="Auditeurs" Type="Self.Auditeurs" Multiplicity="0..1" />
+    <End Role="Auditeurs1" Type="Self.Auditeurs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Auditeurs">
+        <PropertyRef Name="AuditeurId" />
+      </Principal>
+      <Dependent Role="Auditeurs1">
+        <PropertyRef Name="Auditeur_AuditeurId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Audits_dbo_Auditeurs_auditeur_AuditeurId">
+    <End Role="Auditeurs" Type="Self.Auditeurs" Multiplicity="0..1" />
+    <End Role="Audits" Type="Self.Audits" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Auditeurs">
+        <PropertyRef Name="AuditeurId" />
+      </Principal>
+      <Dependent Role="Audits">
+        <PropertyRef Name="auditeur_AuditeurId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Audits_dbo_Semaines_semaine_SemaineId">
+    <End Role="Semaines" Type="Self.Semaines" Multiplicity="0..1" />
+    <End Role="Audits" Type="Self.Audits" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Semaines">
+        <PropertyRef Name="SemaineId" />
+      </Principal>
+      <Dependent Role="Audits">
+        <PropertyRef Name="semaine_SemaineId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Audits_dbo_Zones_zone_ZoneId">
+    <End Role="Zones" Type="Self.Zones" Multiplicity="0..1" />
+    <End Role="Audits" Type="Self.Audits" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zones">
+        <PropertyRef Name="ZoneId" />
+      </Principal>
+      <Dependent Role="Audits">
+        <PropertyRef Name="zone_ZoneId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Resultats_dbo_Audits_audit_AuditId">
+    <End Role="Audits" Type="Self.Audits" Multiplicity="0..1" />
+    <End Role="Resultats" Type="Self.Resultats" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Audits">
+        <PropertyRef Name="AuditId" />
+      </Principal>
+      <Dependent Role="Resultats">
+        <PropertyRef Name="audit_AuditId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Points_dbo_Themes_theme_ThemeId">
+    <End Role="Themes" Type="Self.Themes" Multiplicity="0..1" />
+    <End Role="Points" Type="Self.Points" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Themes">
+        <PropertyRef Name="ThemeId" />
+      </Principal>
+      <Dependent Role="Points">
+        <PropertyRef Name="theme_ThemeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Resultats_dbo_Points_point_PointID">
+    <End Role="Points" Type="Self.Points" Multiplicity="0..1" />
+    <End Role="Resultats" Type="Self.Resultats" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Points">
+        <PropertyRef Name="PointID" />
+      </Principal>
+      <Dependent Role="Resultats">
+        <PropertyRef Name="point_PointID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Resultats_dbo_Themes_theme_ThemeId">
+    <End Role="Themes" Type="Self.Themes" Multiplicity="0..1" />
+    <End Role="Resultats" Type="Self.Resultats" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Themes">
+        <PropertyRef Name="ThemeId" />
+      </Principal>
+      <Dependent Role="Resultats">
+        <PropertyRef Name="theme_ThemeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="BDInterfaceFiveStarsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+    <EntitySet Name="Auditeurs" EntityType="Self.Auditeurs" />
+    <EntitySet Name="Audits" EntityType="Self.Audits" />
+    <EntitySet Name="Points" EntityType="Self.Points" />
+    <EntitySet Name="Resultats" EntityType="Self.Resultats" />
+    <EntitySet Name="Semaines" EntityType="Self.Semaines" />
+    <EntitySet Name="Themes" EntityType="Self.Themes" />
+    <EntitySet Name="Zones" EntityType="Self.Zones" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Auditeurs_dbo_Auditeurs_Auditeur_AuditeurId" Association="Self.FK_dbo_Auditeurs_dbo_Auditeurs_Auditeur_AuditeurId">
+      <End Role="Auditeurs" EntitySet="Auditeurs" />
+      <End Role="Auditeurs1" EntitySet="Auditeurs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Audits_dbo_Auditeurs_auditeur_AuditeurId" Association="Self.FK_dbo_Audits_dbo_Auditeurs_auditeur_AuditeurId">
+      <End Role="Auditeurs" EntitySet="Auditeurs" />
+      <End Role="Audits" EntitySet="Audits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Audits_dbo_Semaines_semaine_SemaineId" Association="Self.FK_dbo_Audits_dbo_Semaines_semaine_SemaineId">
+      <End Role="Semaines" EntitySet="Semaines" />
+      <End Role="Audits" EntitySet="Audits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Audits_dbo_Zones_zone_ZoneId" Association="Self.FK_dbo_Audits_dbo_Zones_zone_ZoneId">
+      <End Role="Zones" EntitySet="Zones" />
+      <End Role="Audits" EntitySet="Audits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Resultats_dbo_Audits_audit_AuditId" Association="Self.FK_dbo_Resultats_dbo_Audits_audit_AuditId">
+      <End Role="Audits" EntitySet="Audits" />
+      <End Role="Resultats" EntitySet="Resultats" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Points_dbo_Themes_theme_ThemeId" Association="Self.FK_dbo_Points_dbo_Themes_theme_ThemeId">
+      <End Role="Themes" EntitySet="Themes" />
+      <End Role="Points" EntitySet="Points" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Resultats_dbo_Points_point_PointID" Association="Self.FK_dbo_Resultats_dbo_Points_point_PointID">
+      <End Role="Points" EntitySet="Points" />
+      <End Role="Resultats" EntitySet="Resultats" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Resultats_dbo_Themes_theme_ThemeId" Association="Self.FK_dbo_Resultats_dbo_Themes_theme_ThemeId">
+      <End Role="Themes" EntitySet="Themes" />
+      <End Role="Resultats" EntitySet="Resultats" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

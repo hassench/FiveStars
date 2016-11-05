@@ -1,0 +1,75 @@
+﻿@model Entities.ViewModels.ResultsViewModel
+
+@{
+    ViewBag.Title = "Les Resultats de la Zone "+@Model.audit.zone.NomZone;
+}
+
+<h2>ViewBag.Title</h2>
+
+
+@using (Html.BeginForm("Resultats", "Auditeur",FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Formulaire</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        @{int compt = -1;}
+        @{String selectnameworkaround = "";}
+        @{String selectidworkaround = "";}
+        @foreach (Entities.Models.Theme item in Model.themes)
+        {
+            <table class="table">
+                <tr>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayFor(modelItem => item.info)</th>
+                    <th>Passing Grade @Html.DisplayFor(modelItem => item.Passinggrade) %</th>
+
+                </tr>
+            </table>
+            <table style="text-align:left" class="table">
+                <tr>
+                    <th></th>
+                </tr>
+                @foreach (Entities.Models.Point insideitem in item.points)
+                {
+                    compt++;
+
+                    <tr>
+
+                        <th style="width: 5%">@Html.DisplayFor(m => insideitem.NumPoint, new { @class = "form-control" })</th>
+                        <th style="width: 63%">@Html.DisplayFor(m => insideitem.NomPoint, new { @class = "form-control" })</th>
+                        <th style="width: 7%">
+                            @{selectnameworkaround = "resultats[" + compt + "].Note";}
+                            @{selectidworkaround = "resultats_" + compt + "__.Note";}
+                            <select class="form-control" id="@selectidworkaround" name="@selectnameworkaround">
+                                @*this c# mess insures that the selected value by default appears to be the saame as previously submitted*@
+                                @{int oppositenotevalue = (Model.resultats[compt].Note==1)?0:1;}
+                                <option value="@Model.resultats[compt].Note">@Model.resultats[compt].Note</option>
+                                <option value="@oppositenotevalue">@oppositenotevalue</option>
+                            </select>
+                        </th>
+                        <th style="width: 25%">@Html.TextBoxFor(m => Model.resultats[compt].req_comment, new { @class = "form-control" })</th>
+
+                    </tr>
+
+                }
+            </table>
+        }
+        @{String auditid = (String)ViewContext.RouteData.Values["id"];}
+        <input type="hidden" name="auditid" value="@auditid" />
+        <div class="form-group, submit">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="POST" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<a href="javascript:window.print()">Imprimer la Check-List </a>
+<link rel="stylesheet" href="@Url.Content("~/Content/print.css")" type="text/css" media="print" />

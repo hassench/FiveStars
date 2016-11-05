@@ -1,0 +1,154 @@
+﻿@model IEnumerable<Entities.Models.PDCA>
+
+@{
+    ViewBag.Title = "PDCAs de la zone";
+}
+
+<h2>
+    PDCAs de la zone : "@ViewBag.NomZone"
+</h2>
+
+@{
+    if (Model == null)
+    {
+        @Html.Display("<b>Pas de PDCAs pour cette zone</b>")
+    }
+    else
+    {
+        <table class="table">
+            <tr style="overflow:hidden; white-space:nowrap">
+                <th>
+                    @Html.DisplayNameFor(model => model.UF)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NLigne)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Machine)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Theme)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Anomalie)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Criticite)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Action)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pilote)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Delai)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateRealise)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.VerifEfficacite)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Commentaire)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.P)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.D)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.C)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr style ="overflow:hidden; white-space:nowrap">
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UF)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NLigne)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Machine)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Theme)
+                    </td>
+
+                    <td>
+
+                        @Html.DisplayFor(modelItem => item.Date)
+
+                    </td>
+
+                    <td class="form-group">
+
+                        @Html.DisplayFor(modelItem => item.Anomalie)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Criticite)
+
+                    </td>
+
+                    <td class="form-group">
+
+                        @Html.DisplayFor(modelItem => item.Action)
+
+                    </td>
+
+                    <td style="overflow:hidden; white-space:nowrap">
+                        @Html.DisplayFor(modelItem => item.Pilote)
+                    </td>
+
+                    <td class="form-group">
+                        @Html.DisplayFor(modelItem => item.Delai)
+                    </td>
+
+                    <td class="form-group">
+                        @Html.DisplayFor(modelItem => item.DateRealise)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VerifEfficacite)
+                    </td>
+
+                    <td class="form-group">
+
+                        @Html.DisplayFor(modelItem => item.Commentaire)
+                    </td>
+
+                    <td class="form-group">
+
+                        @Html.DisplayFor(modelItem => item.P)
+                    </td>
+
+                    <td class="form-group">
+
+                        @Html.DisplayFor(modelItem => item.D)
+                    </td>
+
+                    <td class="form-group">
+
+                        @Html.DisplayFor(modelItem => item.C)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Voir le résultat correspendant", "PDCAZone", "Suivi", new { idAudit = item.resultat.audit.AuditId, idResultat = item.resultat.ResultatId }, null)
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+}
